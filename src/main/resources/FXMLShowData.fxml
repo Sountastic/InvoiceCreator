@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="403.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.invoicesys.controllers.FXMLShowDataController">
+<children>
+      <Pane layoutY="-3.0" prefHeight="45.0" prefWidth="640.0" />
+      <Pane prefHeight="403.0" prefWidth="52.0" style="-fx-background-color: #216869;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fill="WHITE" layoutX="18.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Saved   Data" textAlignment="CENTER" wrappingWidth="16.33673095703125">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TabPane layoutX="59.0" layoutY="3.0" prefHeight="384.0" prefWidth="573.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Users &amp; Customers">
+            <content>
+                  <ScrollPane>
+                     <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane layoutY="42.0">
+                                 <content>
+                                    <TableView fx:id="users_table" prefHeight="127.0" prefWidth="573.0">
+                                      <columns>
+                                        <TableColumn fx:id="user_id" prefWidth="40.0" text="id" />
+                                        <TableColumn fx:id="user_name" prefWidth="83.0" text="first_name" />
+                                          <TableColumn fx:id="user_lastname" prefWidth="71.0" text="last_name" />
+                                          <TableColumn fx:id="user_company" prefWidth="78.0" text="company" />
+                                          <TableColumn fx:id="user_nip" prefWidth="73.0" text="nip" />
+                                          <TableColumn fx:id="user_address" prefWidth="74.0" text="address" />
+                                          <TableColumn fx:id="user_city" prefWidth="77.0" text="city" />
+                                          <TableColumn fx:id="user_email" prefWidth="76.0" text="email" />
+                                      </columns>
+                                    </TableView>
+                                 </content>
+                              </ScrollPane>
+                              <TableView fx:id="clients_table" layoutY="209.0" prefHeight="128.0" prefWidth="573.0">
+                                <columns>
+                                  <TableColumn fx:id="cust_id" prefWidth="33.0" text="id" />
+                                  <TableColumn fx:id="cust_name" prefWidth="83.0" text="first_name" />
+                                    <TableColumn fx:id="cust_lastname" prefWidth="69.0" text="last_name" />
+                                    <TableColumn fx:id="cust_company" prefWidth="84.0" text="company" />
+                                    <TableColumn fx:id="cust_nip" prefWidth="81.0" text="nip" />
+                                    <TableColumn fx:id="cust_address" prefWidth="65.0" text="address" />
+                                    <TableColumn fx:id="cust_city" prefWidth="79.0" text="city" />
+                                    <TableColumn fx:id="cust_email" prefWidth="78.0" text="email" />
+                                </columns>
+                              </TableView>
+                              <Text fill="#216869" layoutX="6.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" wrappingWidth="89.33673095703125">
+                                 <font>
+                                    <Font name="Eras Medium ITC" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#216869" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Users" wrappingWidth="89.33673095703125">
+                                 <font>
+                                    <Font name="Eras Medium ITC" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </ScrollPane>
+            </content>
+          </Tab>
+          <Tab text="Invoices">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutY="48.0">
+                           <content>
+                              <TableView fx:id="invoices_table" prefHeight="293.0" prefWidth="580.0">
+                                <columns>
+                                  <TableColumn prefWidth="43.0" text="id" />
+                                  <TableColumn prefWidth="198.0" text="comapny_name" />
+                                    <TableColumn prefWidth="87.0" text="date" />
+                                    <TableColumn prefWidth="99.0" text="due_date" />
+                                    <TableColumn prefWidth="82.0" text="customer_id" />
+                                    <TableColumn prefWidth="64.0" text="user_id" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <Text fill="#216869" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="  Invoices" wrappingWidth="89.33673095703125">
+                           <font>
+                              <Font name="Eras Medium ITC" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+</children>
+</AnchorPane>

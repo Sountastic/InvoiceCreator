@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.invoicesys.controllers.FXMLUserDataController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: #216869;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="122.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+      <TextField fx:id="userFirstNameTextField" layoutX="202.0" layoutY="93.0" prefHeight="26.0" prefWidth="149.0" promptText="First Name" />
+      <TextField fx:id="userLastNameTextField" layoutX="383.0" layoutY="93.0" prefHeight="26.0" prefWidth="149.0" promptText="Last Name" />
+      <TextField fx:id="userNipTextField" layoutX="383.0" layoutY="148.0" promptText="NIP" />
+      <TextField fx:id="userCompanyNameTextField" layoutX="202.0" layoutY="148.0" promptText="Company Name" />
+      <TextField fx:id="userAddressTextField" layoutX="202.0" layoutY="200.0" promptText="Address" />
+      <TextField fx:id="userCityTextField" layoutX="383.0" layoutY="200.0" promptText="City" />
+      <Label layoutX="299.0" layoutY="35.0" prefHeight="27.0" prefWidth="149.0" text="      User Data" textAlignment="CENTER" textFill="#1f2421">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="userEmailTextField" layoutX="202.0" layoutY="253.0" promptText="e-mail " />
+      <Button fx:id="submitUserDataBtn" layoutX="457.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleSubmitUserDataButton" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #93B1A7;" text="Submit" textAlignment="CENTER" textFill="#1f2421" />
+    <Button fx:id="exitBtn" layoutX="564.0" layoutY="8.0" minWidth="19.0" mnemonicParsing="false" onAction="#handleExitButtonAction" prefHeight="26.0" prefWidth="27.0" text="X" textAlignment="CENTER" textFill="#216869" />
+   </children>
+</AnchorPane>
