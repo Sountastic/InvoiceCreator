@@ -27,8 +27,10 @@ import java.util.ResourceBundle;
 
 @Component
 public class FXMLInvoiceCreatorController implements Initializable {
-    private InvoiceRepository invoiceRepository;
+
     private CustomersRepository customersRepository;
+    private InvoiceRepository invoiceRepository;
+
     private UserRepository userRepository;
     private InvoicePdf invoicePdf;
 
@@ -120,7 +122,6 @@ public class FXMLInvoiceCreatorController implements Initializable {
     public String getChoosenUser() {
         return choosenUser;
     }
-
 
 
 }
