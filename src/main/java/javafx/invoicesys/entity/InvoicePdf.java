@@ -12,11 +12,11 @@ import java.io.FileOutputStream;
 @Component
 public class InvoicePdf {
 
-    private static FXMLInvoiceCreatorController invController;
+//    private static FXMLInvoiceCreatorController invController;
 
-    public InvoicePdf(FXMLInvoiceCreatorController invController) {
-        this.invController = invController;
-    }
+//    public InvoicePdf(FXMLInvoiceCreatorController invController) {
+//        this.invController = invController;
+//    }
 
     private static String FILE = "C:/JavaProjects/MyProjects/InvoiceSysVer3/sample.pdf";
 
@@ -72,7 +72,7 @@ public class InvoicePdf {
         subCatPart = catPart.addSection(subPara);
         subCatPart.add(new Paragraph("Paragraph 1"));
         subCatPart.add(new Paragraph("Paragraph 2"));
-        subCatPart.add(new Paragraph(invController.getChoosenCustomer()));
+//        subCatPart.add(new Paragraph(invController.getChoosenCustomer()));
 
         createTable(subCatPart);
     }

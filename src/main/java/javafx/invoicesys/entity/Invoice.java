@@ -2,8 +2,11 @@ package javafx.invoicesys.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -14,8 +17,8 @@ public class Invoice {
     @Id
     @GeneratedValue
     private Long id;
-    private Date date;
-    private Date dueDate;
+    private LocalDate date;
+    private LocalDate dueDate;
     private String productDescription;
     private int quantity;
     private double price;
@@ -29,13 +32,13 @@ public class Invoice {
     @ManyToOne
     private Customer customer;
 
-    public Invoice(Date date, Date dueDate, Customer customer, User user, String productDescription, int quantity,
+    public Invoice(LocalDate date, LocalDate dueDate, Customer customerData, User userData, String productDescription, int quantity,
                    double price, int tax) {
 
         this.date = date;
         this.dueDate = dueDate;
-        this.customer = customer;
-        this.user = user;
+        this.customer = customerData;
+        this.user = userData;
         this.productDescription = productDescription;
         this.quantity = quantity;
         this.price = price;
@@ -45,5 +48,21 @@ public class Invoice {
     }
 
     public Invoice() {
+    }
+
+    @Override
+    public String toString() {
+        return "Invoice{" +
+                "id=" + id +
+                ", date=" + date +
+                ", dueDate=" + dueDate +
+                ", productDescription='" + productDescription + '\'' +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", tax=" + tax +
+                ", total=" + total +
+                ", user=" + user +
+                ", customer=" + customer +
+                '}';
     }
 }
