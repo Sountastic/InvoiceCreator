@@ -35,7 +35,7 @@ public class FXMLInvoiceCreatorController implements Initializable {
     private int tax;
     private ObservableList<Customer> customerObservableList = FXCollections.observableArrayList();
     private ObservableList<User> userObservableList = FXCollections.observableArrayList();
-    private ObservableList<Product> productList = FXCollections.observableArrayList();
+//    private ObservableList<Product> productList = FXCollections.observableArrayList();
 
     @Autowired
     private InvoiceService invoiceService;

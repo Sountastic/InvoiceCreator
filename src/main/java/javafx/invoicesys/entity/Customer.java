@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "clients")
 public class Customer implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -65,59 +66,4 @@ public class Customer implements Serializable {
                 '}';
     }
 
-    public String getCustomerFirstName() {
-        return customerFirstName;
-    }
-
-    public void setCustomerFirstName(String customerFirstName) {
-        this.customerFirstName = customerFirstName;
-    }
-
-    public String getCustomerLastName() {
-        return customerLastName;
-    }
-
-    public void setCustomerLastName(String customerLastName) {
-        this.customerLastName = customerLastName;
-    }
-
-    public String getCustomerCompanyName() {
-        return customerCompanyName;
-    }
-
-    public void setCustomerCompanyName(String customerCompanyName) {
-        this.customerCompanyName = customerCompanyName;
-    }
-
-    public String getCustomerNip() {
-        return customerNip;
-    }
-
-    public void setCustomerNip(String customerNip) {
-        this.customerNip = customerNip;
-    }
-
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
-
-    public String getCustomerCity() {
-        return customerCity;
-    }
-
-    public void setCustomerCity(String customerCity) {
-        this.customerCity = customerCity;
-    }
-
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
 }

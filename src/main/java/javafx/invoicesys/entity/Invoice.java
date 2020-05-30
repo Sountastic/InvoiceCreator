@@ -14,15 +14,17 @@ import java.util.Date;
 @Entity
 @Table(name = "invoices")
 public class Invoice {
+
     @Id
     @GeneratedValue
     private Long id;
+
     private LocalDate date;
     private LocalDate dueDate;
     private String productDescription;
     private int quantity;
     private double price;
-    private int tax;
+    private double tax;
     private double total;
 
 
@@ -33,7 +35,7 @@ public class Invoice {
     private Customer customer;
 
     public Invoice(LocalDate date, LocalDate dueDate, Customer customerData, User userData, String productDescription, int quantity,
-                   double price, int tax) {
+                   double price, double tax) {
 
         this.date = date;
         this.dueDate = dueDate;
@@ -43,7 +45,7 @@ public class Invoice {
         this.quantity = quantity;
         this.price = price;
         this.tax = tax;
-        this.total = price * tax * quantity;
+        this.total = price * (tax/100) * quantity;
 
     }
 
@@ -65,4 +67,6 @@ public class Invoice {
                 ", customer=" + customer +
                 '}';
     }
+
+
 }

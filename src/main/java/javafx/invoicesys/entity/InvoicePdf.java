@@ -5,6 +5,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import javafx.invoicesys.controllers.FXMLInvoiceCreatorController;
+import javafx.invoicesys.repository.InvoiceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.FileOutputStream;
@@ -12,11 +14,8 @@ import java.io.FileOutputStream;
 @Component
 public class InvoicePdf {
 
-//    private static FXMLInvoiceCreatorController invController;
-
-//    public InvoicePdf(FXMLInvoiceCreatorController invController) {
-//        this.invController = invController;
-//    }
+@Autowired
+    InvoiceRepository invoiceRepository;
 
     private static String FILE = "C:/JavaProjects/MyProjects/InvoiceSysVer3/sample.pdf";
 

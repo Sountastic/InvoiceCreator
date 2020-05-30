@@ -5,10 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.invoicesys.entity.Customer;
+import javafx.invoicesys.entity.Invoice;
 import javafx.invoicesys.entity.User;
 import javafx.invoicesys.repository.CustomersRepository;
+import javafx.invoicesys.repository.InvoiceRepository;
 import javafx.invoicesys.repository.UserRepository;
 import javafx.invoicesys.service.CustomerService;
+import javafx.invoicesys.service.InvoiceService;
 import javafx.invoicesys.service.UserService;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,17 +20,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 @Component
 public class FXMLShowDataController implements Initializable {
-
+    @Autowired
     private UserRepository userRepository;
+    @Autowired
     private CustomersRepository customersRepository;
+    @Autowired
+    private InvoiceRepository invoiceRepository;
 
-    public FXMLShowDataController(UserRepository userRepository, CustomersRepository customersRepository) {
+    public FXMLShowDataController(UserRepository userRepository, CustomersRepository customersRepository,
+                                  InvoiceRepository invoiceRepository) {
         this.userRepository = userRepository;
         this.customersRepository = customersRepository;
+        this.invoiceRepository = invoiceRepository;
     }
 
     @FXML
@@ -70,8 +79,33 @@ public class FXMLShowDataController implements Initializable {
     private TableColumn<Customer, String> cust_email;
 
 
+    @FXML
+    private TableView<Invoice> invoices_table;
+    @FXML
+    private TableColumn<Invoice, Long> inv_id;
+    @FXML
+    private TableColumn<Invoice, LocalDate> inv_date;
+    @FXML
+    private TableColumn<Invoice, LocalDate> inv_due_date;
+    @FXML
+    private TableColumn<Invoice, Long> inv_cust_id;
+    @FXML
+    private TableColumn<Invoice, Long> inv_user_id;
+    @FXML
+    private TableColumn<Invoice, String> product_descr;
+    @FXML
+    private TableColumn<Invoice, Integer> qty;
+    @FXML
+    private TableColumn<Invoice, Double> price;
+    @FXML
+    private TableColumn<Invoice, Double> tax;
+    @FXML
+    private TableColumn<Invoice, Double> total;
+
+
     ObservableList<User> usersoblist = FXCollections.observableArrayList();
     ObservableList<Customer> customersoblist = FXCollections.observableArrayList();
+    ObservableList<Invoice> invoiceobList = FXCollections.observableArrayList();
 
 
     @Override
@@ -103,6 +137,23 @@ public class FXMLShowDataController implements Initializable {
         cust_email.setCellValueFactory(new PropertyValueFactory<>("customerEmail"));
 
         clients_table.setItems(customersoblist);
+
+
+        invoiceobList.addAll(invoiceRepository.findAll());
+
+        inv_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        inv_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        inv_due_date.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+//        inv_cust_id.setCellValueFactory(new PropertyValueFactory<>("customer"));
+//        inv_user_id.setCellValueFactory(new PropertyValueFactory<>("user"));
+        product_descr.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
+        qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
+        total.setCellValueFactory(new PropertyValueFactory<>("total"));
+
+        invoices_table.setItems(invoiceobList);
+
     }
 
     @Autowired
@@ -110,5 +161,8 @@ public class FXMLShowDataController implements Initializable {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private InvoiceService invoiceService;
 
 }

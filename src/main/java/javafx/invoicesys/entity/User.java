@@ -15,7 +15,6 @@ public class User implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-//    private String login;
 
     private String userFirstName;
     private String userLastName;
@@ -31,7 +30,7 @@ public class User implements Serializable {
     public User(String userFirstName, String userLastName, String userCompanyName,
                 String userNip, String userAddress, String userCity, String userEmail) {
 //        this.id = id;
-//        this.login = userLogin;
+
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.userCompanyName = userCompanyName;
@@ -74,8 +73,5 @@ public class User implements Serializable {
                 '}';
     }
 
-    public String getUserFirstName() {
-        return userFirstName;
-    }
 
 }
