@@ -1,4 +1,4 @@
-package javafx.invoicesys.entity;
+package javafx.invoicesys;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Font;

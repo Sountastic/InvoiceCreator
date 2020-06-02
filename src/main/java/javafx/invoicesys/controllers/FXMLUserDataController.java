@@ -2,29 +2,17 @@ package javafx.invoicesys.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.invoicesys.entity.Customer;
 import javafx.invoicesys.entity.User;
-import javafx.invoicesys.repository.CustomersRepository;
 import javafx.invoicesys.repository.UserRepository;
-import javafx.invoicesys.service.CustomerService;
-import javafx.invoicesys.service.UserService;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-@Getter
-@Setter
 @Component
 public class FXMLUserDataController implements Initializable {
-    @Autowired
-    private UserService userService;
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public FXMLUserDataController(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -44,24 +32,22 @@ public class FXMLUserDataController implements Initializable {
     private TextField userCityTextField;
     @FXML
     private TextField userEmailTextField;
-    @FXML
-    private Button submitUserDataBtn;
-    @FXML
-    private Button exitBtn;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) { }
 
     @FXML
     private void handleSubmitUserDataButton() {
-        String userFirstName = userFirstNameTextField.getText();
-        String userLastName = userLastNameTextField.getText();
-        String userCompanyName = userCompanyNameTextField.getText();
-        String userNip = userNipTextField.getText();
-        String userAddress = userAddressTextField.getText();
-        String userCity = userCityTextField.getText();
-        String userEmail = userEmailTextField.getText();
-
-        User user1 = new User(userFirstName, userLastName, userCompanyName, userNip,
-                userAddress, userCity, userEmail);
-        userRepository.save(user1);
+        User user = User.builder()
+                .userFirstName(userFirstNameTextField.getText())
+                .userLastName(userLastNameTextField.getText())
+                .userEmail(userEmailTextField.getText())
+                .userNip(userNipTextField.getText())
+                .userCompanyName(userCompanyNameTextField.getText())
+                .userCity(userCityTextField.getText())
+                .userAddress(userAddressTextField.getText())
+                .build();
+        userRepository.save(user);
     }
 
     @FXML
@@ -69,9 +55,4 @@ public class FXMLUserDataController implements Initializable {
         System.exit(0);
     }
 
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
 }
