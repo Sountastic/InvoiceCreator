@@ -43,7 +43,6 @@ public class FXMLMainWindowController implements Initializable {
         showViewAndWait("FXMLUserData.fxml");
     }
 
-//    @FXML
     public void handleShowDataButton() {
         showViewAndWait("FXMLShowData.fxml");
     }

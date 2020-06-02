@@ -2,12 +2,9 @@ package javafx.invoicesys.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
-import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -21,6 +18,8 @@ public class Invoice {
 
     private LocalDate date;
     private LocalDate dueDate;
+    //    private User userData;
+//    private Customer customerData;
     private String productDescription;
     private int quantity;
     private double price;
@@ -28,10 +27,10 @@ public class Invoice {
     private double total;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Customer customer;
 
     public Invoice(LocalDate date, LocalDate dueDate, Customer customerData, User userData, String productDescription, int quantity,
@@ -45,11 +44,19 @@ public class Invoice {
         this.quantity = quantity;
         this.price = price;
         this.tax = tax;
-        this.total = price * (tax/100) * quantity;
+        this.total = price * (tax / 100) * quantity;
 
     }
 
     public Invoice() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override

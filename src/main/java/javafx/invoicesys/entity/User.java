@@ -24,13 +24,11 @@ public class User implements Serializable {
     private String userCity;
     private String userEmail;
 
-    //    @OneToMany
-//    private List<Invoice> invoiceList;
-//(Long id, String userLogin,
+    @OneToMany
+    private List<Invoice> invoiceList;
+
     public User(String userFirstName, String userLastName, String userCompanyName,
                 String userNip, String userAddress, String userCity, String userEmail) {
-//        this.id = id;
-
         this.userFirstName = userFirstName;
         this.userLastName = userLastName;
         this.userCompanyName = userCompanyName;
@@ -51,14 +49,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-
-    //    public List<Invoice> getInvoiceList() {
-//        return invoiceList;
-//    }
-//
-//    public void setInvoiceList(List<Invoice> invoiceList) {
-//        this.invoiceList = invoiceList;
-//    }
 
     @Override
     public String toString() {

@@ -1,6 +1,5 @@
 package javafx.invoicesys.repository;
 
-import javafx.invoicesys.entity.Customer;
 import javafx.invoicesys.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

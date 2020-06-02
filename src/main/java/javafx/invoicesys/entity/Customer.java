@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -17,8 +18,10 @@ public class Customer implements Serializable {
     @GeneratedValue
     private Long id;
 
-//    @ManyToOne
+    //    @ManyToOne
 //    private User user;
+//    @OneToMany
+//    private List<Invoice> invoiceList;
 
 
     private String customerFirstName;

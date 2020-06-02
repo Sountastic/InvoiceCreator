@@ -24,6 +24,7 @@ import java.util.ResourceBundle;
 
 @Component
 public class FXMLInvoiceCreatorController implements Initializable {
+
     private UserRepository userRepository;
     private CustomersRepository customersRepository;
     private InvoiceRepository invoiceRepository;

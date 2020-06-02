@@ -10,13 +10,9 @@ import javafx.invoicesys.entity.User;
 import javafx.invoicesys.repository.CustomersRepository;
 import javafx.invoicesys.repository.InvoiceRepository;
 import javafx.invoicesys.repository.UserRepository;
-import javafx.invoicesys.service.CustomerService;
-import javafx.invoicesys.service.InvoiceService;
-import javafx.invoicesys.service.UserService;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -25,11 +21,8 @@ import java.util.ResourceBundle;
 
 @Component
 public class FXMLShowDataController implements Initializable {
-    @Autowired
     private UserRepository userRepository;
-    @Autowired
     private CustomersRepository customersRepository;
-    @Autowired
     private InvoiceRepository invoiceRepository;
 
     public FXMLShowDataController(UserRepository userRepository, CustomersRepository customersRepository,
@@ -88,9 +81,9 @@ public class FXMLShowDataController implements Initializable {
     @FXML
     private TableColumn<Invoice, LocalDate> inv_due_date;
     @FXML
-    private TableColumn<Invoice, Long> inv_cust_id;
+    private TableColumn<Invoice, Customer> inv_cust_id;
     @FXML
-    private TableColumn<Invoice, Long> inv_user_id;
+    private TableColumn<Invoice, User> inv_user_id;
     @FXML
     private TableColumn<Invoice, String> product_descr;
     @FXML
@@ -144,8 +137,8 @@ public class FXMLShowDataController implements Initializable {
         inv_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         inv_date.setCellValueFactory(new PropertyValueFactory<>("date"));
         inv_due_date.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
-//        inv_cust_id.setCellValueFactory(new PropertyValueFactory<>("customer"));
-//        inv_user_id.setCellValueFactory(new PropertyValueFactory<>("user"));
+        inv_user_id.setCellValueFactory(new PropertyValueFactory<>("user"));
+        inv_cust_id.setCellValueFactory(new PropertyValueFactory<>("customer"));
         product_descr.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
         qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
@@ -155,14 +148,4 @@ public class FXMLShowDataController implements Initializable {
         invoices_table.setItems(invoiceobList);
 
     }
-
-    @Autowired
-    private CustomerService customerService;
-
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private InvoiceService invoiceService;
-
 }

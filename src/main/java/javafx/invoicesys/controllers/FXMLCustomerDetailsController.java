@@ -17,6 +17,10 @@ import java.util.ResourceBundle;
 
 @Component
 public class FXMLCustomerDetailsController implements Initializable {
+
+    @Autowired
+    private CustomerService customerService;
+
     private CustomersRepository customersRepository;
 
     public FXMLCustomerDetailsController(CustomersRepository customersRepository) {
@@ -69,7 +73,6 @@ public class FXMLCustomerDetailsController implements Initializable {
         //TODO
     }
 
-    @Autowired
-    private CustomerService customerService;
+
 
 }
