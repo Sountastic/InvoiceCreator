@@ -22,6 +22,8 @@ import java.util.ResourceBundle;
 @Setter
 @Component
 public class FXMLUserDataController implements Initializable {
+    @Autowired
+    private UserService userService;
     private UserRepository userRepository;
 
     public FXMLUserDataController(UserRepository userRepository) {
@@ -67,8 +69,6 @@ public class FXMLUserDataController implements Initializable {
         System.exit(0);
     }
 
-    @Autowired
-    private UserService userService;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

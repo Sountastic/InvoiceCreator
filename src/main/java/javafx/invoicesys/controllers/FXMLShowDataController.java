@@ -33,59 +33,59 @@ public class FXMLShowDataController implements Initializable {
     }
 
     @FXML
-    private TableView<User> users_table;
+    private TableView<User> usersTable;
     @FXML
-    private TableColumn<User, Long> user_id;
+    private TableColumn<User, Long> userId;
     @FXML
-    private TableColumn<User, String> user_name;
+    private TableColumn<User, String> userName;
     @FXML
-    private TableColumn<User, String> user_lastname;
+    private TableColumn<User, String> userLastname;
     @FXML
-    private TableColumn<User, String> user_company;
+    private TableColumn<User, String> userCompany;
     @FXML
-    private TableColumn<User, String> user_nip;
+    private TableColumn<User, String> userNip;
     @FXML
-    private TableColumn<User, String> user_address;
+    private TableColumn<User, String> userAddress;
     @FXML
-    private TableColumn<User, String> user_city;
+    private TableColumn<User, String> userCity;
     @FXML
-    private TableColumn<User, String> user_email;
+    private TableColumn<User, String> userEmail;
 
 
     @FXML
-    private TableView<Customer> clients_table;
+    private TableView<Customer> clientsTable;
     @FXML
-    private TableColumn<Customer, Long> cust_id;
+    private TableColumn<Customer, Long> custId;
     @FXML
-    private TableColumn<Customer, String> cust_name;
+    private TableColumn<Customer, String> custName;
     @FXML
-    private TableColumn<Customer, String> cust_lastname;
+    private TableColumn<Customer, String> custLastname;
     @FXML
-    private TableColumn<Customer, String> cust_company;
+    private TableColumn<Customer, String> custCompany;
     @FXML
-    private TableColumn<Customer, String> cust_nip;
+    private TableColumn<Customer, String> custNip;
     @FXML
-    private TableColumn<Customer, String> cust_address;
+    private TableColumn<Customer, String> custAddress;
     @FXML
-    private TableColumn<Customer, String> cust_city;
+    private TableColumn<Customer, String> custCity;
     @FXML
-    private TableColumn<Customer, String> cust_email;
+    private TableColumn<Customer, String> custEmail;
 
 
     @FXML
-    private TableView<Invoice> invoices_table;
+    private TableView<Invoice> invoicesTable;
     @FXML
-    private TableColumn<Invoice, Long> inv_id;
+    private TableColumn<Invoice, Long> invId;
     @FXML
-    private TableColumn<Invoice, LocalDate> inv_date;
+    private TableColumn<Invoice, LocalDate> invDate;
     @FXML
-    private TableColumn<Invoice, LocalDate> inv_due_date;
+    private TableColumn<Invoice, LocalDate> invDueDate;
     @FXML
-    private TableColumn<Invoice, Customer> inv_cust_id;
+    private TableColumn<Invoice, Customer> invCustId;
     @FXML
-    private TableColumn<Invoice, User> inv_user_id;
+    private TableColumn<Invoice, User> invUserId;
     @FXML
-    private TableColumn<Invoice, String> product_descr;
+    private TableColumn<Invoice, String> productDescr;
     @FXML
     private TableColumn<Invoice, Integer> qty;
     @FXML
@@ -106,46 +106,46 @@ public class FXMLShowDataController implements Initializable {
 
         usersoblist.addAll(userRepository.findAll());
 
-        user_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        user_name.setCellValueFactory(new PropertyValueFactory<>("userFirstName"));
-        user_lastname.setCellValueFactory(new PropertyValueFactory<>("userLastName"));
-        user_company.setCellValueFactory(new PropertyValueFactory<>("userCompanyName"));
-        user_nip.setCellValueFactory(new PropertyValueFactory<>("userNip"));
-        user_address.setCellValueFactory(new PropertyValueFactory<>("userAddress"));
-        user_city.setCellValueFactory(new PropertyValueFactory<>("userCity"));
-        user_email.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
+        userId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        userName.setCellValueFactory(new PropertyValueFactory<>("userFirstName"));
+        userLastname.setCellValueFactory(new PropertyValueFactory<>("userLastName"));
+        userCompany.setCellValueFactory(new PropertyValueFactory<>("userCompanyName"));
+        userNip.setCellValueFactory(new PropertyValueFactory<>("userNip"));
+        userAddress.setCellValueFactory(new PropertyValueFactory<>("userAddress"));
+        userCity.setCellValueFactory(new PropertyValueFactory<>("userCity"));
+        userEmail.setCellValueFactory(new PropertyValueFactory<>("userEmail"));
 
-        users_table.setItems(usersoblist);
+        usersTable.setItems(usersoblist);
 
 
         customersoblist.addAll(customersRepository.findAll());
 
-        cust_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        cust_name.setCellValueFactory(new PropertyValueFactory<>("customerFirstName"));
-        cust_lastname.setCellValueFactory(new PropertyValueFactory<>("customerLastName"));
-        cust_company.setCellValueFactory(new PropertyValueFactory<>("customerCompanyName"));
-        cust_nip.setCellValueFactory(new PropertyValueFactory<>("customerNip"));
-        cust_address.setCellValueFactory(new PropertyValueFactory<>("customerAddress"));
-        cust_city.setCellValueFactory(new PropertyValueFactory<>("customerCity"));
-        cust_email.setCellValueFactory(new PropertyValueFactory<>("customerEmail"));
+        custId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        custName.setCellValueFactory(new PropertyValueFactory<>("customerFirstName"));
+        custLastname.setCellValueFactory(new PropertyValueFactory<>("customerLastName"));
+        custCompany.setCellValueFactory(new PropertyValueFactory<>("customerCompanyName"));
+        custNip.setCellValueFactory(new PropertyValueFactory<>("customerNip"));
+        custAddress.setCellValueFactory(new PropertyValueFactory<>("customerAddress"));
+        custCity.setCellValueFactory(new PropertyValueFactory<>("customerCity"));
+        custEmail.setCellValueFactory(new PropertyValueFactory<>("customerEmail"));
 
-        clients_table.setItems(customersoblist);
+        clientsTable.setItems(customersoblist);
 
 
         invoiceobList.addAll(invoiceRepository.findAll());
 
-        inv_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        inv_date.setCellValueFactory(new PropertyValueFactory<>("date"));
-        inv_due_date.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
-        inv_user_id.setCellValueFactory(new PropertyValueFactory<>("user"));
-        inv_cust_id.setCellValueFactory(new PropertyValueFactory<>("customer"));
-        product_descr.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
+        invId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        invDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        invDueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+        invUserId.setCellValueFactory(new PropertyValueFactory<>("user"));
+        invCustId.setCellValueFactory(new PropertyValueFactory<>("customer"));
+        productDescr.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
         qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
         total.setCellValueFactory(new PropertyValueFactory<>("total"));
 
-        invoices_table.setItems(invoiceobList);
+        invoicesTable.setItems(invoiceobList);
 
     }
 }

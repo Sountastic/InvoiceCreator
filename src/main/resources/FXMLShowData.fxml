@@ -34,30 +34,33 @@
                            <children>
                               <ScrollPane layoutY="42.0">
                                  <content>
-                                    <TableView fx:id="users_table" prefHeight="127.0" prefWidth="573.0">
+                                    <TableView fx:id="usersTable" prefHeight="127.0" prefWidth="573.0">
                                       <columns>
-                                        <TableColumn fx:id="user_id" prefWidth="40.0" text="id" />
-                                        <TableColumn fx:id="user_name" prefWidth="83.0" text="first_name" />
-                                          <TableColumn fx:id="user_lastname" prefWidth="71.0" text="last_name" />
-                                          <TableColumn fx:id="user_company" prefWidth="78.0" text="company" />
-                                          <TableColumn fx:id="user_nip" prefWidth="73.0" text="nip" />
-                                          <TableColumn fx:id="user_address" prefWidth="74.0" text="address" />
-                                          <TableColumn fx:id="user_city" prefWidth="77.0" text="city" />
-                                          <TableColumn fx:id="user_email" prefWidth="76.0" text="email" />
+                                        <TableColumn fx:id="userId" prefWidth="40.0" text="id" />
+                                        <TableColumn fx:id="userName" prefWidth="83.0" text="first_name" />
+                                          <TableColumn fx:id="userLastname" prefWidth="71.0" text="last_name" />
+                                          <TableColumn fx:id="userCompany" prefWidth="78.0" text="company" />
+                                          <TableColumn fx:id="userNip" prefWidth="73.0" text="nip" />
+                                          <TableColumn fx:id="userAddress" prefWidth="74.0" text="address" />
+                                          <TableColumn fx:id="userCity" prefWidth="77.0" text="city" />
+                                          <TableColumn fx:id="userEmail" prefWidth="76.0" text="email" />
                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
                                     </TableView>
                                  </content>
                               </ScrollPane>
-                              <TableView fx:id="clients_table" layoutY="209.0" prefHeight="128.0" prefWidth="573.0">
+                              <TableView fx:id="clientsTable" layoutY="209.0" prefHeight="128.0" prefWidth="573.0">
                                 <columns>
-                                  <TableColumn fx:id="cust_id" prefWidth="33.0" text="id" />
-                                  <TableColumn fx:id="cust_name" prefWidth="83.0" text="first_name" />
-                                    <TableColumn fx:id="cust_lastname" prefWidth="69.0" text="last_name" />
-                                    <TableColumn fx:id="cust_company" prefWidth="84.0" text="company" />
-                                    <TableColumn fx:id="cust_nip" prefWidth="81.0" text="nip" />
-                                    <TableColumn fx:id="cust_address" prefWidth="65.0" text="address" />
-                                    <TableColumn fx:id="cust_city" prefWidth="79.0" text="city" />
-                                    <TableColumn fx:id="cust_email" prefWidth="78.0" text="email" />
+                                  <TableColumn fx:id="custId" prefWidth="33.0" text="id" />
+                                  <TableColumn fx:id="custName" prefWidth="83.0" text="first_name" />
+                                    <TableColumn fx:id="custLastname" prefWidth="69.0" text="last_name" />
+                                    <TableColumn fx:id="custCompany" prefWidth="84.0" text="company" />
+                                    <TableColumn fx:id="custNip" prefWidth="81.0" text="nip" />
+                                    <TableColumn fx:id="custAddress" prefWidth="65.0" text="address" />
+                                    <TableColumn fx:id="custCity" prefWidth="79.0" text="city" />
+                                    <TableColumn fx:id="custEmail" prefWidth="78.0" text="email" />
                                 </columns>
                               </TableView>
                               <Text fill="#216869" layoutX="6.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customers" wrappingWidth="89.33673095703125">
@@ -82,16 +85,16 @@
                      <children>
                         <ScrollPane layoutY="48.0">
                            <content>
-                              <TableView fx:id="invoices_table" prefHeight="293.0" prefWidth="576.0">
+                              <TableView fx:id="invoicesTable" prefHeight="293.0" prefWidth="576.0">
                                 <columns>
-                                  <TableColumn fx:id="inv_id" prefWidth="43.0" text="id" />
-                                    <TableColumn fx:id="inv_date" prefWidth="52.0" text="date" />
-                                    <TableColumn fx:id="inv_due_date" prefWidth="56.0" text="due_date" />
-                                    <TableColumn fx:id="inv_cust_id" prefWidth="53.0" text="customer_id" />
-                                    <TableColumn fx:id="inv_user_id" prefWidth="53.0" text="user_id" />
-                                  <TableColumn fx:id="product_descr" prefWidth="110.0" text="product_description" />
-                                    <TableColumn fx:id="qty" prefWidth="33.0" text="qty" />
-                                    <TableColumn fx:id="price" prefWidth="54.0" text="price" />
+                                  <TableColumn fx:id="invId" prefWidth="43.0" text="id" />
+                                    <TableColumn fx:id="invDate" prefWidth="52.0" text="date" />
+                                    <TableColumn fx:id="invDueDate" prefWidth="56.0" text="due_date" />
+                                    <TableColumn fx:id="invCustId" prefWidth="53.0" text="customer" />
+                                    <TableColumn fx:id="invUserId" prefWidth="53.0" text="user" />
+                                  <TableColumn fx:id="productDescr" prefWidth="110.0" text="product_description" />
+                                    <TableColumn fx:id="qty" prefWidth="46.0" text="qty" />
+                                    <TableColumn fx:id="price" prefWidth="41.0" text="price" />
                                     <TableColumn fx:id="tax" prefWidth="50.0" text="tax" />
                                     <TableColumn fx:id="total" prefWidth="75.0" text="total" />
                                 </columns>

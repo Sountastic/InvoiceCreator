@@ -1,6 +1,7 @@
 package javafx.invoicesys.entity;
 
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,20 +9,21 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-@Getter
-@Setter
+
 @Entity
 @Table(name = "clients")
 public class Customer implements Serializable {
 
     @Id
     @GeneratedValue
+    @NotNull
+    @Column(name = "CustomerID", unique = true)
     private Long id;
 
     //    @ManyToOne
 //    private User user;
-//    @OneToMany
-//    private List<Invoice> invoiceList;
+    @OneToMany
+    private List<Invoice> invoiceList;
 
 
     private String customerFirstName;
@@ -54,6 +56,62 @@ public class Customer implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCustomerFirstName() {
+        return customerFirstName;
+    }
+
+    public void setCustomerFirstName(String customerFirstName) {
+        this.customerFirstName = customerFirstName;
+    }
+
+    public String getCustomerLastName() {
+        return customerLastName;
+    }
+
+    public void setCustomerLastName(String customerLastName) {
+        this.customerLastName = customerLastName;
+    }
+
+    public String getCustomerCompanyName() {
+        return customerCompanyName;
+    }
+
+    public void setCustomerCompanyName(String customerCompanyName) {
+        this.customerCompanyName = customerCompanyName;
+    }
+
+    public String getCustomerNip() {
+        return customerNip;
+    }
+
+    public void setCustomerNip(String customerNip) {
+        this.customerNip = customerNip;
+    }
+
+    public String getCustomerAddress() {
+        return customerAddress;
+    }
+
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
+    }
+
+    public String getCustomerCity() {
+        return customerCity;
+    }
+
+    public void setCustomerCity(String customerCity) {
+        this.customerCity = customerCity;
+    }
+
+    public String getCustomerEmail() {
+        return customerEmail;
+    }
+
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
     @Override
