@@ -54,10 +54,9 @@
       <DatePicker fx:id="date" layoutX="503.0" layoutY="42.0" prefHeight="25.0" prefWidth="80.0" />
       <ChoiceBox fx:id="customerChoice" layoutX="168.0" layoutY="124.0" prefWidth="150.0" />
       <ChoiceBox fx:id="userChoice" layoutX="436.0" layoutY="124.0" prefWidth="150.0" />
-      <TextField fx:id="descrTextField" layoutX="178.0" layoutY="254.0" prefHeight="25.0" prefWidth="122.0" promptText="Description" />
       <TextField fx:id="qtyTextField" layoutX="325.0" layoutY="254.0" prefHeight="25.0" prefWidth="33.0" promptText="Qty" />
-      <TextField fx:id="priceTextField" layoutX="379.0" layoutY="254.0" prefHeight="25.0" prefWidth="44.0" promptText="Price" />
       <TextField fx:id="taxTextField" layoutX="445.0" layoutY="254.0" prefHeight="25.0" prefWidth="33.0" promptText="Tax" />
       <Button fx:id="addProductToInvoiceBtn" layoutX="511.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleAddProductToInvoiceBtn" text="Add" />
+      <ChoiceBox fx:id="productsChoice" layoutX="168.0" layoutY="254.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

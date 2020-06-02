@@ -21,16 +21,9 @@ import java.util.ResourceBundle;
 
 @Component
 public class FXMLShowDataController implements Initializable {
-    private UserRepository userRepository;
-    private CustomersRepository customersRepository;
-    private InvoiceRepository invoiceRepository;
-
-    public FXMLShowDataController(UserRepository userRepository, CustomersRepository customersRepository,
-                                  InvoiceRepository invoiceRepository) {
-        this.userRepository = userRepository;
-        this.customersRepository = customersRepository;
-        this.invoiceRepository = invoiceRepository;
-    }
+    private final UserRepository userRepository;
+    private final CustomersRepository customersRepository;
+    private final InvoiceRepository invoiceRepository;
 
     @FXML
     private TableView<User> usersTable;
@@ -100,6 +93,12 @@ public class FXMLShowDataController implements Initializable {
     ObservableList<Customer> customersoblist = FXCollections.observableArrayList();
     ObservableList<Invoice> invoiceobList = FXCollections.observableArrayList();
 
+    public FXMLShowDataController(UserRepository userRepository, CustomersRepository customersRepository,
+                                  InvoiceRepository invoiceRepository) {
+        this.userRepository = userRepository;
+        this.customersRepository = customersRepository;
+        this.invoiceRepository = invoiceRepository;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

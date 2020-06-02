@@ -1,17 +1,19 @@
 package javafx.invoicesys.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "products")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Product {
 
     @Id
@@ -21,16 +23,16 @@ public class Product {
     private String description;
     private double price;
 
-    public Product(String description, double price) {
-        this.description = description;
-        this.price = price;
+    public Double countPrice(Long quantity, Double tax) {
+        double priceWithoutTax = price * quantity;
+        return priceWithoutTax + (priceWithoutTax * tax);
     }
 
-    public Product() {
+    @Override
+    public String toString() {
+        return "Product{" +
+                "description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
-
-    public Long getId() {
-        return id;
-    }
-
 }
