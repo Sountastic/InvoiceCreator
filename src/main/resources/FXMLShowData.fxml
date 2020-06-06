@@ -87,16 +87,12 @@
                            <content>
                               <TableView fx:id="invoicesTable" prefHeight="293.0" prefWidth="576.0">
                                 <columns>
-                                  <TableColumn fx:id="invId" prefWidth="43.0" text="id" />
-                                    <TableColumn fx:id="invDate" prefWidth="52.0" text="date" />
-                                    <TableColumn fx:id="invDueDate" prefWidth="56.0" text="due_date" />
-                                    <TableColumn fx:id="invCustId" prefWidth="53.0" text="customer" />
-                                    <TableColumn fx:id="invUserId" prefWidth="53.0" text="user" />
-                                  <TableColumn fx:id="productDescr" prefWidth="110.0" text="product_description" />
-                                    <TableColumn fx:id="qty" prefWidth="46.0" text="qty" />
-                                    <TableColumn fx:id="price" prefWidth="41.0" text="price" />
-                                    <TableColumn fx:id="tax" prefWidth="50.0" text="tax" />
-                                    <TableColumn fx:id="total" prefWidth="75.0" text="total" />
+                                  <TableColumn fx:id="invId" prefWidth="62.0" text="id" />
+                                    <TableColumn fx:id="invDate" prefWidth="83.0" text="date" />
+                                    <TableColumn fx:id="invDueDate" prefWidth="99.0" text="due_date" />
+                                    <TableColumn fx:id="invCustId" prefWidth="130.0" text="customer" />
+                                    <TableColumn fx:id="invUserId" prefWidth="113.0" text="user" />
+                                    <TableColumn fx:id="total" prefWidth="88.0" text="total" />
                                 </columns>
                               </TableView>
                            </content>

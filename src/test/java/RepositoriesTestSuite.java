@@ -1,5 +1,7 @@
 import javafx.invoicesys.entity.Customer;
 import javafx.invoicesys.entity.Invoice;
+import javafx.invoicesys.entity.InvoiceProduct;
+import javafx.invoicesys.entity.Product;
 import javafx.invoicesys.repository.CustomersRepository;
 import javafx.invoicesys.repository.InvoiceRepository;
 import javafx.invoicesys.repository.UserRepository;
@@ -26,8 +28,8 @@ public class RepositoriesTestSuite {
     @Test
     public void checkInvoiceRepository() {
         //Given
-        Invoice invoice = new Invoice(LocalDate.now(), LocalDate.now(), customersRepository.getOne(1L), userRepository.getOne(3L),
-                "test", 1, 100, 8);
+        Invoice invoice = new Invoice();
+
         //When
         invoiceRepository.save(invoice);
         System.out.println(invoice);
