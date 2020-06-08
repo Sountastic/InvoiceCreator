@@ -2,6 +2,9 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+# Gradle
+.gradle/
+
 ForumStatisticsTestSuite.class
 ### STS ###
 .apt_generated
