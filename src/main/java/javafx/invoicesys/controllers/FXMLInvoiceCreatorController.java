@@ -5,8 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.invoicesys.entity.*;
-import javafx.invoicesys.repository.*;
-import javafx.scene.control.*;
+import javafx.invoicesys.repository.CustomersRepository;
+import javafx.invoicesys.repository.InvoiceRepository;
+import javafx.invoicesys.repository.ProductRepository;
+import javafx.invoicesys.repository.UserRepository;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -18,15 +23,12 @@ public class FXMLInvoiceCreatorController implements Initializable {
     private final CustomersRepository customersRepository;
     private final InvoiceRepository invoiceRepository;
     private final ProductRepository productRepository;
-    private final InvoiceProductsRepository invoiceProductsRepository;
 
     private final ObservableList<Customer> customerObservableList = FXCollections.observableArrayList();
     private final ObservableList<User> userObservableList = FXCollections.observableArrayList();
     private final ObservableList<Product> productList = FXCollections.observableArrayList();
-    private final ObservableList<InvoiceProduct> invoiceProductsObservableList = FXCollections.observableArrayList();
 
     private final Invoice.InvoiceBuilder invoiceBuilder = Invoice.builder();
-    @FXML
     private Double total = 0.0;
 
     @FXML
@@ -44,25 +46,11 @@ public class FXMLInvoiceCreatorController implements Initializable {
     @FXML
     private TextField taxTextField;
 
-//    @FXML
-//    private TableView<InvoiceProduct> productTableView;
-//    @FXML
-//    private TableColumn<InvoiceProduct, Integer> qty;
-//    @FXML
-//    private TableColumn<InvoiceProduct, Double> price;
-//    @FXML
-//    private TableColumn<InvoiceProduct, Double> tax;
-//    @FXML
-//    private TableColumn<InvoiceProduct, Double> totalCount;
-
-    public FXMLInvoiceCreatorController(UserRepository userRepository, CustomersRepository customersRepository,
-                                        InvoiceRepository invoiceRepository, ProductRepository productRepository,
-                                        InvoiceProductsRepository invoiceProductsRepository) {
+    public FXMLInvoiceCreatorController(UserRepository userRepository, CustomersRepository customersRepository, InvoiceRepository invoiceRepository, ProductRepository productRepository) {
         this.userRepository = userRepository;
         this.customersRepository = customersRepository;
         this.invoiceRepository = invoiceRepository;
         this.productRepository = productRepository;
-        this.invoiceProductsRepository = invoiceProductsRepository;
     }
 
     @Override
@@ -75,15 +63,12 @@ public class FXMLInvoiceCreatorController implements Initializable {
 
         productList.addAll(productRepository.findAll());
         productsChoice.setItems(productList);
-
-//        invoiceProductsObservableList.addAll(invoiceProductsRepository.findAll());
-//        productTableView.setItems(invoiceProductsObservableList);
     }
 
     @FXML
     private void handleAddProductToInvoiceBtn() {
         Product product = productsChoice.getValue();
-        Long quantity = Long.parseLong(qtyTextField.getText());
+        Long quantity =  Long.parseLong(qtyTextField.getText());
         double tax = Double.parseDouble(taxTextField.getText());
 
         InvoiceProduct invoiceProduct = InvoiceProduct.builder()

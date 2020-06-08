@@ -7,19 +7,15 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import javafx.invoicesys.entity.Invoice;
-import javafx.invoicesys.entity.InvoiceProduct;
 import javafx.invoicesys.repository.InvoiceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.FileOutputStream;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 
 @Component
 public class InvoicePdf {
+
+    final InvoiceRepository invoiceRepository;
 
     private static String FILE = "C:/JavaProjects/MyProjects/InvoiceSysVer3/sample3.pdf";
 
@@ -31,33 +27,14 @@ public class InvoicePdf {
             Font.BOLD);
     private static Font smallBold = new Font(Font.FontFamily.HELVETICA, 12,
             Font.NORMAL);
-    @Autowired
-    InvoiceRepository invoiceRepository;
 
-    private static Invoice invoice;
-//    private final Long invoiceId = invoice.getId();
-//    private final LocalDate invoiceDate = invoice.getDate();
-//    private final LocalDate invoiceDueDate = invoice.getDueDate();
-//    private final String customerData = invoice.getCustomer().toString();
-//    private final String userData = invoice.getUser().toString();
-//    private final List<InvoiceProduct> productDescription = invoice.getProducts();
-//    private final double total = invoice.getTotal();
-
-
-//    public InvoicePdf(InvoiceRepository invoiceRepository) {
-//        this.invoiceRepository = invoiceRepository;
-//    }
-//public static void main(String[] args) {
-//    InvoicePdf ip = new InvoicePdf();
-//    ip.getDataFromRepositoryById(7L);
-//    ip.createPdf();
-//}
-    public void getDataFromRepositoryById(Long invoiceId) {
-        invoiceRepository.findById(invoiceId);
+    public InvoicePdf(InvoiceRepository invoiceRepository) {
+        this.invoiceRepository = invoiceRepository;
     }
 
     public void createPdf() {
         try {
+//            invoiceRepository.findFirstById()
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
             document.open();
@@ -121,14 +98,14 @@ public class InvoicePdf {
         table.addCell(new PdfPCell(new Phrase("Tax")));
         table.addCell(new PdfPCell(new Phrase("Total")));
         // now we add a cell with rowspan 2
-        cell = new PdfPCell(new Phrase(invoice.getProducts().toString()));
+        cell = new PdfPCell(new Phrase("Cell with rowspan 2"));
         cell.setRowspan(2);
         table.addCell(cell);
         // we add the four remaining cells with addCell()
 //        table.addCell();
-        table.addCell("nic");
+        table.addCell("row 1; cell 2");
         table.addCell("row 2; cell 1");
-        table.addCell(Double.toString(invoice.getTotal()));
+        table.addCell("row 2; cell 2");
         return table;
     }
 //    private static PdfPTable createTable(Section subCatPart) throws BadElementException {
