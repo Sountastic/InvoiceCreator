@@ -30,7 +30,7 @@ public class User implements Serializable {
     private String userEmail;
 
     @OneToMany
-    private List<Invoice> invoiceList = new LinkedList<>();
+    private List<Invoice> invoiceList;
 
     @Override
     public String toString() {

@@ -2,6 +2,10 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+# Gradle
+.gradle/
+gradle/wrapper/gradle-wrapper.jar
+
 ForumStatisticsTestSuite.class
 ### STS ###
 .apt_generated

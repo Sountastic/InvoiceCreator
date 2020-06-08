@@ -31,7 +31,7 @@ public class Customer implements Serializable {
     private String customerEmail;
 
     @OneToMany
-    private List<Invoice> invoiceList = new LinkedList<>();
+    private List<Invoice> invoiceList;
 
     @Override
     public String toString() {
