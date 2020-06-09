@@ -4,9 +4,9 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -40,23 +40,22 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TreeTableView fx:id="productTableView" layoutX="168.0" layoutY="162.0" prefHeight="77.0" prefWidth="415.0">
-        <columns>
-          <TreeTableColumn prefWidth="146.0" text="Description" />
-          <TreeTableColumn prefWidth="49.0" text="Qty" />
-            <TreeTableColumn prefWidth="70.0" text="Price" />
-            <TreeTableColumn prefWidth="56.0" text="Tax" />
-            <TreeTableColumn prefWidth="93.0" text="Total" />
-        </columns>
-      </TreeTableView>
-      <Button fx:id="downloadBtn" layoutX="228.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleDownloadButton" prefHeight="26.0" prefWidth="87.0" style="-fx-background-color: #93B1A7;" text="Download" textAlignment="CENTER" textFill="#1f2421" />
       <DatePicker fx:id="dueDate" layoutX="503.0" layoutY="69.0" prefHeight="25.0" prefWidth="80.0" />
       <DatePicker fx:id="date" layoutX="503.0" layoutY="42.0" prefHeight="25.0" prefWidth="80.0" />
       <ChoiceBox fx:id="customerChoice" layoutX="168.0" layoutY="124.0" prefWidth="150.0" />
       <ChoiceBox fx:id="userChoice" layoutX="436.0" layoutY="124.0" prefWidth="150.0" />
-      <TextField fx:id="qtyTextField" layoutX="325.0" layoutY="254.0" prefHeight="25.0" prefWidth="33.0" promptText="Qty" />
-      <TextField fx:id="taxTextField" layoutX="445.0" layoutY="254.0" prefHeight="25.0" prefWidth="33.0" promptText="Tax" />
-      <Button fx:id="addProductToInvoiceBtn" layoutX="511.0" layoutY="254.0" mnemonicParsing="false" onAction="#handleAddProductToInvoiceBtn" text="Add" />
-      <ChoiceBox fx:id="productsChoice" layoutX="168.0" layoutY="254.0" prefWidth="150.0" />
+      <TextField fx:id="qtyTextField" layoutX="360.0" layoutY="280.0" prefHeight="26.0" prefWidth="47.0" promptText="Qty" />
+      <TextField fx:id="taxTextField" layoutX="428.0" layoutY="280.0" prefHeight="26.0" prefWidth="47.0" promptText="Tax" />
+      <Button fx:id="addProductToInvoiceBtn" layoutX="508.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleAddProductToInvoiceBtn" text="Add" />
+      <ChoiceBox fx:id="productsChoice" layoutX="186.0" layoutY="280.0" prefWidth="150.0" />
+      <TableView fx:id="productTableView" layoutX="171.0" layoutY="167.0" prefHeight="90.0" prefWidth="411.0">
+        <columns>
+          <TableColumn fx:id="productDescription" prefWidth="159.99998474121094" text="Description" />
+          <TableColumn fx:id="qty" prefWidth="58.4000244140625" text="Qty" />
+            <TableColumn fx:id="price" prefWidth="70.39996337890625" text="Price" />
+            <TableColumn fx:id="tax" prefWidth="50.40008544921875" text="Tax" />
+            <TableColumn fx:id="totalPrice" prefWidth="75.19989013671875" text="Total " />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

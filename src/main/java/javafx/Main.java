@@ -3,9 +3,11 @@ package javafx;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.invoicesys.entity.Customer;
+import javafx.invoicesys.entity.Invoice;
 import javafx.invoicesys.entity.Product;
 import javafx.invoicesys.entity.User;
 import javafx.invoicesys.repository.CustomersRepository;
+import javafx.invoicesys.repository.InvoiceRepository;
 import javafx.invoicesys.repository.ProductRepository;
 import javafx.invoicesys.repository.UserRepository;
 import javafx.scene.Parent;
@@ -16,6 +18,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,28 +40,29 @@ public class Main extends Application {
         CustomersRepository customersRepository = springContext.getBean(CustomersRepository.class);
         UserRepository userRepository = springContext.getBean(UserRepository.class);
         ProductRepository productRepository = springContext.getBean(ProductRepository.class);
+        InvoiceRepository invoiceRepository = springContext.getBean(InvoiceRepository.class);
 
         Customer customer = Customer.builder()
-                .customerFirstName("Shrek")
+                .customerFirstName("Rod")
                 .customerLastName("Wonderful")
                 .customerAddress("Here 12")
                 .customerCity("Krakow")
-                .customerCompanyName("Fuck off")
+                .customerCompanyName("Foo")
                 .customerEmail("foo@bar.com")
-                .customerNip("111")
+                .customerNip("123")
                 .build();
-        customersRepository.save(customer);
+        customersRepository.saveAndFlush(customer);
 
         User user = User.builder()
                 .userAddress("lalal")
                 .userCity("Katowice")
-                .userCompanyName("kakak")
+                .userCompanyName("Kakak")
                 .userEmail("nopw@nopw.pl")
                 .userFirstName("John")
                 .userLastName("Snow")
-                .userNip("3333")
+                .userNip("345")
                 .build();
-        userRepository.save(user);
+        userRepository.saveAndFlush(user);
 
         final List<Product> products = new ArrayList<>();
         products.add(Product.builder().description("paprika").price(1.0).build());
@@ -66,6 +70,16 @@ public class Main extends Application {
         products.add(Product.builder().description("drugs").price(12.0).build());
         products.add(Product.builder().description("pizza").price(3.0).build());
         productRepository.saveAll(products);
+
+        Invoice invoice = Invoice.builder()
+                .id(7L)
+                .date(LocalDate.now())
+                .dueDate(LocalDate.of(2020, 06, 25))
+                .user(user)
+                .customer(customer)
+                .total(350.00)
+                .build();
+        invoiceRepository.saveAndFlush(invoice);
     }
 
     @Override
