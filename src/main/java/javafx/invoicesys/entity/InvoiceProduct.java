@@ -24,4 +24,6 @@ public class InvoiceProduct {
 
     @ManyToOne
     private Product product;
+
+    //bez getterow i setterow wlasny setter , adn nad getterem   @transient
 }

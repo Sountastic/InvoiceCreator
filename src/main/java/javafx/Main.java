@@ -41,7 +41,7 @@ public class Main extends Application {
         UserRepository userRepository = springContext.getBean(UserRepository.class);
         ProductRepository productRepository = springContext.getBean(ProductRepository.class);
         InvoiceRepository invoiceRepository = springContext.getBean(InvoiceRepository.class);
-
+//przeniesc do main() / init.sql w resources
         Customer customer = Customer.builder()
                 .customerFirstName("Rod")
                 .customerLastName("Wonderful")
