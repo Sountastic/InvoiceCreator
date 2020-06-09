@@ -76,6 +76,8 @@ public class FXMLInvoiceCreatorController implements Initializable {
         productList.addAll(productRepository.findAll());
         productsChoice.setItems(productList);
 
+        //zapytac
+        productDescription.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
         qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         tax.setCellValueFactory(new PropertyValueFactory<>("tax"));

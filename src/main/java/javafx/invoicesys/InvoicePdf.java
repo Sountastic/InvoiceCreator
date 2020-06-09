@@ -7,6 +7,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import javafx.invoicesys.entity.Invoice;
 import javafx.invoicesys.repository.InvoiceRepository;
 import org.springframework.stereotype.Component;
 
@@ -32,14 +33,14 @@ public class InvoicePdf {
         this.invoiceRepository = invoiceRepository;
     }
 
-    public void createPdf() {
+    public void createPdf(Invoice invoice) {
         try {
 //            invoiceRepository.findFirstById()
             Document document = new Document();
             PdfWriter.getInstance(document, new FileOutputStream(FILE));
             document.open();
-            document.add(createTable());
-//            addMetaData(document);
+            document.add(createTable(invoice));
+            addMetaData(document);
 //            addTitlePage(document);
 //            addContent(document);
             document.close();
@@ -49,10 +50,11 @@ public class InvoicePdf {
     }
 
     //
-//    private static void addMetaData(Document document) {
-//        document.addTitle("Invoice");
-//    }
-//
+    private static void addMetaData(Document document) {
+        document.addTitle("Invoice");
+    }
+
+    //
 //    private static void addTitlePage(Document document)
 //            throws DocumentException {
 //        Paragraph preface = new Paragraph();
@@ -86,7 +88,7 @@ public class InvoicePdf {
 //
 //    }
 //
-    private static PdfPTable createTable() {
+    private static PdfPTable createTable(Invoice invoice) {
         PdfPTable table = new PdfPTable(5);
         PdfPCell cell;
         cell = new PdfPCell(new Phrase("Product description"));
@@ -98,14 +100,14 @@ public class InvoicePdf {
         table.addCell(new PdfPCell(new Phrase("Tax")));
         table.addCell(new PdfPCell(new Phrase("Total")));
         // now we add a cell with rowspan 2
-        cell = new PdfPCell(new Phrase("Cell with rowspan 2"));
+        cell = new PdfPCell(new Phrase(invoice.getProducts().toString()));
         cell.setRowspan(2);
         table.addCell(cell);
         // we add the four remaining cells with addCell()
 //        table.addCell();
         table.addCell("row 1; cell 2");
         table.addCell("row 2; cell 1");
-        table.addCell("row 2; cell 2");
+        table.addCell(Double.toString(invoice.getTotal()));
         return table;
     }
 //    private static PdfPTable createTable(Section subCatPart) throws BadElementException {

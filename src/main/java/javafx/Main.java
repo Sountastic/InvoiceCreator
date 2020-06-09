@@ -80,6 +80,11 @@ public class Main extends Application {
                 .total(350.00)
                 .build();
         invoiceRepository.saveAndFlush(invoice);
+
+        //
+//        InvoicePdf ip = new InvoicePdf();
+//
+//        ip.createPdf(invoice);
     }
 
     @Override

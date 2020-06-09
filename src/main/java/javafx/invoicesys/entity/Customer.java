@@ -36,9 +36,9 @@ public class Customer implements Serializable {
     @Override
     public String toString() {
         return "Customer{" +
-                "id=" + id +
-                ", customerFirstName='" + customerFirstName + '\'' +
-                ", customerLastName='" + customerLastName + '\'' +
+//                "id=" + id +
+//                ", customerFirstName='" + customerFirstName + '\'' +
+//                ", customerLastName='" + customerLastName + '\'' +
                 ", customerCompanyName='" + customerCompanyName + '\'' +
                 '}';
     }
