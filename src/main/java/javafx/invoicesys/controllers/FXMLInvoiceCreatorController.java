@@ -8,6 +8,13 @@ import javafx.invoicesys.entity.*;
 import javafx.invoicesys.repository.*;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.invoicesys.repository.CustomersRepository;
+import javafx.invoicesys.repository.InvoiceRepository;
+import javafx.invoicesys.repository.ProductRepository;
+import javafx.invoicesys.repository.UserRepository;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -57,12 +64,14 @@ public class FXMLInvoiceCreatorController implements Initializable {
     @FXML
     private TableColumn<InvoiceProduct, Double> totalPrice;
 
-    public FXMLInvoiceCreatorController(UserRepository userRepository, CustomersRepository customersRepository, InvoiceRepository invoiceRepository, ProductRepository productRepository, InvoiceProductRepository invoiceProductRepository) {
+    public FXMLInvoiceCreatorController(UserRepository userRepository, CustomersRepository customersRepository, InvoiceRepository invoiceRepository, ProductRepository productRepository) {
+
         this.userRepository = userRepository;
         this.customersRepository = customersRepository;
         this.invoiceRepository = invoiceRepository;
         this.productRepository = productRepository;
         this.invoiceProductRepository = invoiceProductRepository;
+
     }
 
     @Override
@@ -76,6 +85,7 @@ public class FXMLInvoiceCreatorController implements Initializable {
         productList.addAll(productRepository.findAll());
         productsChoice.setItems(productList);
 
+
         //zapytac
         productDescription.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
         qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
@@ -84,12 +94,13 @@ public class FXMLInvoiceCreatorController implements Initializable {
         totalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
         productTableView.setItems(invoiceProductObservableList);
+
     }
 
     @FXML
     private void handleAddProductToInvoiceBtn() {
         Product product = productsChoice.getValue();
-        Long quantity = Long.parseLong(qtyTextField.getText());
+        Long quantity =  Long.parseLong(qtyTextField.getText());
         double tax = Double.parseDouble(taxTextField.getText());
 
         InvoiceProduct invoiceProduct = InvoiceProduct.builder()

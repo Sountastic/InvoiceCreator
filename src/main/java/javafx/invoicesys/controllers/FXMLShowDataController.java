@@ -78,6 +78,14 @@ public class FXMLShowDataController implements Initializable {
     @FXML
     private TableColumn<Invoice, User> invUserId;
     @FXML
+    private TableColumn<Invoice, String> productDescr;
+    @FXML
+    private TableColumn<Invoice, Integer> qty;
+    @FXML
+    private TableColumn<Invoice, Double> price;
+    @FXML
+    private TableColumn<Invoice, Double> tax;
+    @FXML
     private TableColumn<Invoice, Double> total;
 
 
@@ -130,6 +138,10 @@ public class FXMLShowDataController implements Initializable {
         invDueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
         invUserId.setCellValueFactory(new PropertyValueFactory<>("user"));
         invCustId.setCellValueFactory(new PropertyValueFactory<>("customer"));
+        productDescr.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
+        qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
         total.setCellValueFactory(new PropertyValueFactory<>("total"));
 
         invoicesTable.setItems(invoiceobList);

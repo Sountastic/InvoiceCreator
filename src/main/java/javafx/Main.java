@@ -3,11 +3,9 @@ package javafx;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.invoicesys.entity.Customer;
-import javafx.invoicesys.entity.Invoice;
 import javafx.invoicesys.entity.Product;
 import javafx.invoicesys.entity.User;
 import javafx.invoicesys.repository.CustomersRepository;
-import javafx.invoicesys.repository.InvoiceRepository;
 import javafx.invoicesys.repository.ProductRepository;
 import javafx.invoicesys.repository.UserRepository;
 import javafx.scene.Parent;
@@ -17,8 +15,8 @@ import javafx.stage.StageStyle;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
 import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +38,6 @@ public class Main extends Application {
         CustomersRepository customersRepository = springContext.getBean(CustomersRepository.class);
         UserRepository userRepository = springContext.getBean(UserRepository.class);
         ProductRepository productRepository = springContext.getBean(ProductRepository.class);
-        InvoiceRepository invoiceRepository = springContext.getBean(InvoiceRepository.class);
 
         Customer customer = Customer.builder()
                 .customerFirstName("Rod")
@@ -70,7 +67,7 @@ public class Main extends Application {
         products.add(Product.builder().description("drugs").price(12.0).build());
         products.add(Product.builder().description("pizza").price(3.0).build());
         productRepository.saveAll(products);
-
+      
         Invoice invoice = Invoice.builder()
                 .id(7L)
                 .date(LocalDate.now())
@@ -80,11 +77,6 @@ public class Main extends Application {
                 .total(350.00)
                 .build();
         invoiceRepository.saveAndFlush(invoice);
-
-        //
-//        InvoicePdf ip = new InvoicePdf();
-//
-//        ip.createPdf(invoice);
     }
 
     @Override

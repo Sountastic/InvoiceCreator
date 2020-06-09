@@ -69,13 +69,14 @@ public class InvoicePdf {
         table.addCell(new PdfPCell(new Phrase("Total")));
 
         cell = new PdfPCell(new Phrase(invoice.getProducts().toString()));
+
+        cell = new PdfPCell(new Phrase("Cell with rowspan 2"));
         cell.setRowspan(2);
         table.addCell(cell);
 
-//        table.addCell();
         table.addCell("row 1; cell 2");
         table.addCell("row 2; cell 1");
-        table.addCell(Double.toString(invoice.getTotal()));
+        table.addCell("row 2; cell 2");
         return table;
     }
 

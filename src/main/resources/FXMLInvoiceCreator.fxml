@@ -40,6 +40,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+
       <DatePicker fx:id="dueDate" layoutX="503.0" layoutY="69.0" prefHeight="25.0" prefWidth="80.0" />
       <DatePicker fx:id="date" layoutX="503.0" layoutY="42.0" prefHeight="25.0" prefWidth="80.0" />
       <ChoiceBox fx:id="customerChoice" layoutX="168.0" layoutY="124.0" prefWidth="150.0" />

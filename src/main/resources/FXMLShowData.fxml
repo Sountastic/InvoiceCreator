@@ -87,12 +87,14 @@
                            <content>
                               <TableView fx:id="invoicesTable" prefHeight="294.0" prefWidth="560.0">
                                 <columns>
+
                                   <TableColumn fx:id="invId" prefWidth="59.20001220703125" text="id" />
                                     <TableColumn fx:id="invDate" prefWidth="84.79998779296875" text="date" />
                                     <TableColumn fx:id="invDueDate" prefWidth="85.60003662109375" text="due_date" />
                                     <TableColumn fx:id="invCustId" prefWidth="123.199951171875" text="customer" />
                                     <TableColumn fx:id="invUserId" prefWidth="132.79998779296875" text="user" />
                                     <TableColumn fx:id="total" prefWidth="72.0" text="total" />
+
                                 </columns>
                               </TableView>
                            </content>
