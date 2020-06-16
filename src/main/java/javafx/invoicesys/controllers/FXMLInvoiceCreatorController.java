@@ -112,6 +112,8 @@ public class FXMLInvoiceCreatorController implements Initializable {
                 .build();
 
         invoiceProductObservableList.add(invoiceProduct);
+//        String productDescription = invoiceProduct.getProduct().getDescription();
+//        double price = invoiceProduct.getProduct().getPrice();
         invoiceBuilder.product(invoiceProduct);
         total += invoiceProduct.getTotalPrice();
     }

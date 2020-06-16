@@ -2,6 +2,7 @@ package javafx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.invoicesys.InvoicePdf;
 import javafx.invoicesys.entity.Customer;
 import javafx.invoicesys.entity.Invoice;
 import javafx.invoicesys.entity.Product;
@@ -27,9 +28,11 @@ import java.util.List;
 public class Main extends Application {
     private ConfigurableApplicationContext springContext;
 
+
     public static void main(String[] args) {
 
         launch(args);
+
     }
 
     @Override
@@ -79,6 +82,9 @@ public class Main extends Application {
                 .total(350.00)
                 .build();
         invoiceRepository.saveAndFlush(invoice);
+
+        InvoicePdf ip = new InvoicePdf();
+        ip.createPdf(invoiceRepository.findFirstById(7L));
     }
 
     @Override

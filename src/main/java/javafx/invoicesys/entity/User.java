@@ -34,11 +34,12 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
+//        return "User{" +
 //                "id=" + id +
 //                ", userFirstName='" + userFirstName + '\'' +
 //                ", userLastName='" + userLastName + '\'' +
-                ", userCompanyName='" + userCompanyName + '\'' +
-                '}';
+//                ", userCompanyName='" + userCompanyName + '\'' +
+//                '}';
+        return userCompanyName;
     }
 }
