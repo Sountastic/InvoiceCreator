@@ -36,6 +36,7 @@ public class InvoicePdf {
             document.add(Chunk.NEWLINE);
             document.add(addSellerAndBuyerData(invoice));
             document.add(Chunk.NEWLINE);
+            document.add(Chunk.NEWLINE);
             document.add(createTable(invoice));
             addMetaData(document);
             addTitlePage(document);
@@ -67,7 +68,7 @@ public class InvoicePdf {
         PdfPCell cellTwo = new PdfPCell(new Paragraph(addCustomerData(invoice)));
         cellOne.setBorder(Rectangle.NO_BORDER);
         cellOne.setLeading(1f, 1.2f);
-        cellOne.setPaddingLeft(25);
+        cellOne.setPaddingLeft(15);
         cellTwo.setBorder(Rectangle.NO_BORDER);
         cellTwo.setLeading(1f, 1.2f);
         cellTwo.setPaddingLeft(120);
@@ -114,7 +115,7 @@ public class InvoicePdf {
 
     private static PdfPTable createTable(Invoice invoice) {
         PdfPTable table = new PdfPTable(5);
-        table.setWidthPercentage(90f);
+        table.setWidthPercentage(85f);
         table.addCell(new PdfPCell(new Phrase("Product description")));
         table.addCell(new PdfPCell(new Phrase("Quantity")));
         table.addCell(new PdfPCell(new Phrase("Price")));

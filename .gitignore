@@ -5,6 +5,7 @@ build/
 # Gradle
 .gradle/
 
+.sql
 .pdf
 
 ForumStatisticsTestSuite.class

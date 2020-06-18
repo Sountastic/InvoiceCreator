@@ -39,49 +39,7 @@ public class Main extends Application {
     public void init() throws Exception {
         springContext = SpringApplication.run(Main.class);
 
-        CustomersRepository customersRepository = springContext.getBean(CustomersRepository.class);
-        UserRepository userRepository = springContext.getBean(UserRepository.class);
-        ProductRepository productRepository = springContext.getBean(ProductRepository.class);
         InvoiceRepository invoiceRepository = springContext.getBean(InvoiceRepository.class);
-
-        Customer customer = Customer.builder()
-                .customerFirstName("Rod")
-                .customerLastName("Wonderful")
-                .customerAddress("Here 12")
-                .customerCity("Krakow")
-                .customerCompanyName("Foo")
-                .customerEmail("foo@bar.com")
-                .customerNip("123")
-                .build();
-        customersRepository.saveAndFlush(customer);
-
-        User user = User.builder()
-                .userAddress("lalal")
-                .userCity("Katowice")
-                .userCompanyName("Kakak")
-                .userEmail("nopw@nopw.pl")
-                .userFirstName("John")
-                .userLastName("Snow")
-                .userNip("345")
-                .build();
-        userRepository.saveAndFlush(user);
-
-        final List<Product> products = new ArrayList<>();
-        products.add(Product.builder().description("paprika").price(1.0).build());
-        products.add(Product.builder().description("cotton").price(10.0).build());
-        products.add(Product.builder().description("drugs").price(12.0).build());
-        products.add(Product.builder().description("pizza").price(3.0).build());
-        productRepository.saveAll(products);
-
-        Invoice invoice = Invoice.builder()
-                .id(7L)
-                .date(LocalDate.now())
-                .dueDate(LocalDate.of(2020, 06, 25))
-                .user(user)
-                .customer(customer)
-                .total(350.00)
-                .build();
-        invoiceRepository.saveAndFlush(invoice);
 
         InvoicePdf ip = new InvoicePdf();
         ip.createPdf(invoiceRepository.findFirstById(7L));
