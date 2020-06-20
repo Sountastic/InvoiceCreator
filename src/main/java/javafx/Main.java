@@ -3,14 +3,8 @@ package javafx;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.invoicesys.InvoicePdf;
-import javafx.invoicesys.entity.Customer;
 import javafx.invoicesys.entity.Invoice;
-import javafx.invoicesys.entity.Product;
-import javafx.invoicesys.entity.User;
-import javafx.invoicesys.repository.CustomersRepository;
 import javafx.invoicesys.repository.InvoiceRepository;
-import javafx.invoicesys.repository.ProductRepository;
-import javafx.invoicesys.repository.UserRepository;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -18,11 +12,6 @@ import javafx.stage.StageStyle;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.time.LocalDate;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class Main extends Application {
@@ -42,7 +31,9 @@ public class Main extends Application {
         InvoiceRepository invoiceRepository = springContext.getBean(InvoiceRepository.class);
 
         InvoicePdf ip = new InvoicePdf();
-        ip.createPdf(invoiceRepository.findFirstById(7L));
+        Invoice invoice = invoiceRepository.findAll().get(0);
+        System.out.println(invoice);
+        ip.createPdf(invoice, "C:/JavaProjects/MyProjects/InvoiceSysVer3/sample3.pdf");
     }
 
     @Override

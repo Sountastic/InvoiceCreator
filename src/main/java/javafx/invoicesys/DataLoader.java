@@ -1,9 +1,6 @@
 package javafx.invoicesys;
 
-import javafx.invoicesys.entity.Customer;
-import javafx.invoicesys.entity.Invoice;
-import javafx.invoicesys.entity.Product;
-import javafx.invoicesys.entity.User;
+import javafx.invoicesys.entity.*;
 import javafx.invoicesys.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -66,13 +63,19 @@ public class DataLoader {
         products.add(Product.builder().description("pizza").price(3.0).build());
         productRepository.saveAll(products);
 
+        final List<InvoiceProduct> invoiceProducts = new ArrayList<>();
+        invoiceProducts.add(InvoiceProduct.builder().quantity(2L).tax(23.0).product(products.get(0)).totalPrice(2.5).build());
+        invoiceProducts.add(InvoiceProduct.builder().quantity(1L).tax(23.0).product(products.get(1)).totalPrice(12.3).build());
+        invoiceProducts.add(InvoiceProduct.builder().quantity(3L).tax(23.0).product(products.get(2)).totalPrice(44.28).build());
+        invoiceProductRepository.saveAll(invoiceProducts);
+
         Invoice invoice = Invoice.builder()
-                .id(7L)
                 .date(LocalDate.now())
                 .dueDate(LocalDate.of(2020, 06, 25))
                 .user(user)
                 .customer(customer)
-                .total(350.00)
+                .products(invoiceProducts)
+                .total(59.08)
                 .build();
         invoiceRepository.saveAndFlush(invoice);
     }

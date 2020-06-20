@@ -25,7 +25,7 @@ public class Invoice {
     private LocalDate dueDate;
     private double total;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @Singular
     private List<InvoiceProduct> products;
 

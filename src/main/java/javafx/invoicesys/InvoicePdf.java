@@ -4,13 +4,17 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
 import javafx.invoicesys.entity.Customer;
 import javafx.invoicesys.entity.Invoice;
+import javafx.invoicesys.entity.InvoiceProduct;
 import javafx.invoicesys.entity.User;
 import javafx.scene.text.TextAlignment;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.FileOutputStream;
+import java.util.List;
 
 @Component
+@Transactional
 public class InvoicePdf {
 
     private static String FILE = "C:/JavaProjects/MyProjects/InvoiceSysVer3/sample3.pdf";
@@ -25,10 +29,10 @@ public class InvoicePdf {
             Font.BOLD);
 
 
-    public void createPdf(Invoice invoice) {
+    public void createPdf(Invoice invoice, String path) {
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(FILE));
+            PdfWriter.getInstance(document, new FileOutputStream(path));
             document.open();
             document.add(addTitle("INVOICE no." + invoice.getId().toString()));
             document.add(Chunk.NEWLINE);
@@ -121,8 +125,16 @@ public class InvoicePdf {
         table.addCell(new PdfPCell(new Phrase("Price")));
         table.addCell(new PdfPCell(new Phrase("Tax")));
         table.addCell(new PdfPCell(new Phrase("Total")));
-        table.addCell(new PdfPCell(new Phrase("descr1")));
-        table.addCell(new PdfPCell(new Phrase("qty")));
+
+        List<InvoiceProduct> productList = invoice.getProducts();
+
+        productList.forEach(product -> {
+            table.addCell(new PdfPCell(new Phrase(product.getProduct().getDescription())));
+            table.addCell(new PdfPCell(new Phrase(product.getQuantity().toString())));
+            table.addCell(new PdfPCell(new Phrase(Double.toString(product.getProduct().getPrice()))));
+            table.addCell(new PdfPCell(new Phrase(Double.toString(product.getTax()))));
+            table.addCell(new PdfPCell(new Phrase(Double.toString(product.getTotalPrice()))));
+        });
 
         PdfPCell cell = new PdfPCell(new Phrase("price"));
         cell.setHorizontalAlignment(Element.ALIGN_CENTER);

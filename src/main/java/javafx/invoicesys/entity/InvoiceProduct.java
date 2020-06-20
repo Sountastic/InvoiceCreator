@@ -18,12 +18,11 @@ public class InvoiceProduct {
     @GeneratedValue
     private Long id;
 
-
     private Long quantity;
     private double tax;
     private double totalPrice;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Product product;
 
     public Long getId() {

@@ -31,7 +31,6 @@ public class FXMLInvoiceCreatorController implements Initializable {
     private final CustomersRepository customersRepository;
     private final InvoiceRepository invoiceRepository;
     private final ProductRepository productRepository;
-    private final InvoiceProductRepository invoiceProductRepository;
 
     private final ObservableList<Customer> customerObservableList = FXCollections.observableArrayList();
     private final ObservableList<User> userObservableList = FXCollections.observableArrayList();
@@ -70,15 +69,12 @@ public class FXMLInvoiceCreatorController implements Initializable {
     private TableColumn<InvoiceProduct, Double> totalPrice;
 
     public FXMLInvoiceCreatorController(UserRepository userRepository, CustomersRepository customersRepository,
-                                        InvoiceRepository invoiceRepository, ProductRepository productRepository,
-                                        InvoiceProductRepository invoiceProductRepository) {
+                                        InvoiceRepository invoiceRepository, ProductRepository productRepository) {
 
         this.userRepository = userRepository;
         this.customersRepository = customersRepository;
         this.invoiceRepository = invoiceRepository;
         this.productRepository = productRepository;
-        this.invoiceProductRepository = invoiceProductRepository;
-
     }
 
     @Override
@@ -93,10 +89,8 @@ public class FXMLInvoiceCreatorController implements Initializable {
         productsChoice.setItems(productList);
 
 
-//        productDescription.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
         productDescription.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getProduct().getDescription()));
         qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-//        price.setCellValueFactory(new PropertyValueFactory<>("price"));
         price.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getProduct().getPrice()));
         tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
         totalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
@@ -119,8 +113,6 @@ public class FXMLInvoiceCreatorController implements Initializable {
                 .build();
 
         invoiceProductObservableList.add(invoiceProduct);
-//        String productDescription = invoiceProduct.getProduct().getDescription();
-//        double price = invoiceProduct.getProduct().getPrice();
         invoiceBuilder.product(invoiceProduct);
         total += invoiceProduct.getTotalPrice();
     }
