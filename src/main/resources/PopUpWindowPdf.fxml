@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="103.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.invoicesys.controllers.PopUpWindowPdfController">
+   <children>
+      <Text fill="#216869" layoutX="19.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Pdf has been successfully downloaded to C:\ folder" textAlignment="CENTER" wrappingWidth="359.73675537109375">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

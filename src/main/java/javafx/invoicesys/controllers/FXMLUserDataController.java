@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.invoicesys.entity.User;
 import javafx.invoicesys.repository.UserRepository;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -32,6 +34,8 @@ public class FXMLUserDataController implements Initializable {
     private TextField userCityTextField;
     @FXML
     private TextField userEmailTextField;
+    @FXML
+    private Button submitUserDataBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) { }
@@ -48,11 +52,8 @@ public class FXMLUserDataController implements Initializable {
                 .userAddress(userAddressTextField.getText())
                 .build();
         userRepository.save(user);
-    }
 
-    @FXML
-    private void handleExitButtonAction() {
-        System.exit(0);
+        Stage stage = (Stage) submitUserDataBtn.getScene().getWindow();
+        stage.close();
     }
-
 }

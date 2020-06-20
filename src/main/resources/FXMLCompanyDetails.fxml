@@ -28,6 +28,5 @@
       </Label>
       <TextField fx:id="customerEmailTextField" layoutX="202.0" layoutY="253.0" promptText="e-mail " />
       <Button fx:id="submitCustomerDataBtn" layoutX="457.0" layoutY="336.0" mnemonicParsing="false" onAction="#handleSubmitCustomerDataButton" prefHeight="26.0" prefWidth="70.0" style="-fx-background-color: #93B1A7;" text="Submit" textAlignment="CENTER" textFill="#1f2421" />
-    <Button fx:id="exitBtn" layoutX="564.0" layoutY="8.0" minWidth="19.0" mnemonicParsing="false" onAction="#handleExitButtonAction" prefHeight="26.0" prefWidth="27.0" text="X" textAlignment="CENTER" textFill="#216869" />
    </children>
 </AnchorPane>

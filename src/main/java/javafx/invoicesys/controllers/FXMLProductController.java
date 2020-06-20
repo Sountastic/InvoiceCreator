@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.invoicesys.entity.Product;
 import javafx.invoicesys.repository.ProductRepository;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -18,6 +20,8 @@ public class FXMLProductController implements Initializable {
     private TextField productNameTextField;
     @FXML
     private TextField productPriceTextField;
+    @FXML
+    private Button submitNewProductBtn;
 
     public FXMLProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -33,6 +37,9 @@ public class FXMLProductController implements Initializable {
                 .price(Double.parseDouble(productPriceTextField.getText()))
                 .build();
         productRepository.save(product);
+
+        Stage stage = (Stage) submitNewProductBtn.getScene().getWindow();
+        stage.close();
     }
 
 }

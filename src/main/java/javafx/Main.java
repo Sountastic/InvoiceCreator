@@ -27,13 +27,11 @@ public class Main extends Application {
     @Override
     public void init() throws Exception {
         springContext = SpringApplication.run(Main.class);
-
         InvoiceRepository invoiceRepository = springContext.getBean(InvoiceRepository.class);
 
-        InvoicePdf ip = new InvoicePdf();
-        Invoice invoice = invoiceRepository.findAll().get(0);
-        System.out.println(invoice);
-        ip.createPdf(invoice, "C:/JavaProjects/MyProjects/InvoiceSysVer3/sample3.pdf");
+//        InvoicePdf ip = new InvoicePdf();
+//        Invoice invoice = invoiceRepository.findAll().get(0);
+//        ip.createPdf(invoice, "C:/JavaProjects/MyProjects/InvoiceSysVer3/sample3.pdf");
     }
 
     @Override
