@@ -1,5 +1,9 @@
 package javafx.invoicesys.controllers;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +19,7 @@ import javafx.invoicesys.repository.UserRepository;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.util.Callback;
 import org.springframework.stereotype.Component;
 
 import java.net.URL;
@@ -88,9 +93,11 @@ public class FXMLInvoiceCreatorController implements Initializable {
         productsChoice.setItems(productList);
 
 
-        productDescription.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
+//        productDescription.setCellValueFactory(new PropertyValueFactory<>("productDescription"));
+        productDescription.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getProduct().getDescription()));
         qty.setCellValueFactory(new PropertyValueFactory<>("quantity"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+//        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        price.setCellValueFactory(p -> new SimpleObjectProperty<>(p.getValue().getProduct().getPrice()));
         tax.setCellValueFactory(new PropertyValueFactory<>("tax"));
         totalPrice.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 

@@ -65,4 +65,5 @@ public class InvoiceProduct {
     public void setProduct(Product product) {
         this.product = product;
     }
+
 }

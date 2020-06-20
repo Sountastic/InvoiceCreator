@@ -26,7 +26,6 @@ public class Product {
     public Double countPrice(Long quantity, Double tax) {
         double priceWithoutTax = price * quantity;
         return priceWithoutTax + (priceWithoutTax * tax/100);
-
     }
 
     @Override
